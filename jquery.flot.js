@@ -2029,7 +2029,8 @@ Licensed under the MIT license.
             for (var j = 0; j < axes.length; ++j) {
                 var axis = axes[j], box = axis.box,
                     t = axis.tickLength, x, y, xoff, yoff;
-                if (!axis.show || axis.ticks.length == 0)
+                    rTicks = axis.rotatedTicks || axis.ticks;
+                if (!axis.show || rTicks.length == 0)
                     continue;
 
                 ctx.lineWidth = 1;
@@ -2078,8 +2079,8 @@ Licensed under the MIT license.
                 ctx.strokeStyle = axis.options.tickColor;
 
                 ctx.beginPath();
-                for (i = 0; i < axis.ticks.length; ++i) {
-                    var v = axis.ticks[i].v;
+                for (i = 0; i < rTicks.length; ++i) {
+                    var v = rTicks[i].v;
 
                     xoff = yoff = 0;
 
